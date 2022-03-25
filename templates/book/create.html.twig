@@ -1,0 +1,117 @@
+{% extends "base.html.twig" %}
+{% block body %}
+{% if app.user %}
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title>Contact Form 05</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+	<link rel="stylesheet" href="{{ asset('css2/style1.css')}}">
+
+	</head>
+	<body style="background-color:PapayaWhip;">
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-12">
+					<div class="wrapper">
+						<div class="row no-gutters">
+							<div class="col-lg-6">
+								<div class="contact-wrap w-100 p-md-5 p-4">
+									<h3>Add a new book</h3>
+									<div class="row mb-4">
+										<div class="col-md-4">
+											<div class="dbox w-100 d-flex align-items-start">
+						        		
+						          </div>
+										</div>
+									</div>
+									{{form_start(form)}}
+										
+                                        <div class="row">
+											<div class="col-md-12">
+												<div class="form-group">
+                                                <label style="color:black;">Title</label>
+													{{form_widget(form.title,{'attr':{'class':'form-control', 'placeholder' :'Book title' }})}}
+												</div>
+											</div>
+											<div class="col-md-12"> 
+												<div class="form-group">
+                                                <label style="color:black;">Author</label>
+													{{form_widget(form.author,{'attr':{'class':'form-control', 'placeholder' :'Author name' }})}}
+												</div>
+											</div>
+											<div class="col-md-12">
+												<div class="form-group">
+                                                <label style="color:black;">Edition</label>
+													{{form_widget(form.edition,{'attr':{'class':'form-control', 'placeholder' :'Book edition' }})}}
+												</div>
+											</div>
+											<div class="col-md-12">
+												<div class="form-group">
+                                                <label style="color:black;">Category</label>
+													{{form_widget(form.category,{'attr':{'class':'form-select', 'placeholder' :'Choose the book category' }})}}
+												</div>
+											</div>
+											<div class="col-md-12">
+												<div class="form-group">
+                                            
+													{{form_widget(form.user,{'attr':{'class':'form-control', 'style':'display:none'}})}}
+												</div>
+											</div>
+                                            <div class="col-md-12">
+												<div class="form-group">
+                                                <label style="color:black;">Select your book image</label>
+													{{form_widget(form.book_img,{'attr':{'class':'form-control', 'placeholder' :'Select your book image' }})}}
+												</div>
+											</div><div class="col-md-12">
+												<div class="form-group">
+                                                <label style="color:black;">Select your book</label>
+													{{form_widget(form.book_content,{'attr':{'class':'form-control', 'placeholder' :'Select the book' }})}}
+												</div>
+											</div><div class="col-md-12">
+												
+											</div><div class="col-md-12">
+												<div class="form-group">
+                                                <label style="color:black;">Enter a resume of this book</label>
+													{{form_widget(form.resume,{'attr':{'class':'form-control', 'placeholder' :'Book resume' }})}}
+												</div>
+											</div>
+											<div class="col-md-12">
+												<div class="form-group">
+													<input type="submit" value="Add book" class="btn btn-primary">
+													<div class="submitting"></div>
+												</div>
+											</div>
+										</div>
+									{{form_end(form)}}
+								</div>
+							</div>
+							<div class="col-lg-6 d-flex align-items-stretch">
+								<div class="info-wrap w-100 p-5 img" style="background-image: url(images/book.jpg);">
+			          </div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+
+  <script src="{{ asset('js2/jquery.min.js')}}"></script>
+  <script src="{{ asset('js2/popper.js')}}"></script>
+  <script src="{{ asset('js2/bootstrap.min.js')}}"></script>
+  <script src="{{ asset('js2/jquery.validate.min.js')}}"></script>
+  <script src="{{ asset('js2/main.js')}}"></script>
+
+	</body>
+</html>
+{% endif %}
+{% endblock %}

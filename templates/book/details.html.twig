@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<body style="background-color:PapayaWhip;">
+ <!-- Product section-->
+        <section class="py-5">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="row gx-4 gx-lg-5 align-items-center">
+                    <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="{{ asset('uploads/' ~ list.bookImg) }}" alt="..." /></div>
+                    <div class="col-md-6">
+                        <h1 class="display-5 fw-bolder">{{list.title}}</h1>
+                        <div class="fs-5 mb-5">
+                            <span>
+                             Edition : {{list.edition}}
+                                    <br>
+                                  Author : {{list.author}}
+                                  <br>
+                                  Category : {{list.category}}</span>
+                            
+                        </div>
+                        <div class="lead">{{list.resume}}</div>
+                        <div class="d-flex">
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                         <div class="text-center"> 
+                           {% if app.user and app.user.id == list.user.id %}
+                             <a class="btn btn-outline-dark mt-auto" href="{{path('update',{'id':list.id})}}">Update</a>
+                             <a class="btn btn-outline-dark mt-auto" href="{{path('delete',{'id':list.id})}}">Delete</a>
+                            {% endif %}
+                            {% if app.user %}
+                                <a class="btn btn-outline-dark mt-auto" href="{{ asset('uploads/' ~ list.bookContent) }}">Read online</a>
+                            {% else %}
+                                <a class="btn btn-outline-dark mt-auto" href="{{ path('app_login') }}">Read online</a></div>
+                                
+                            {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="py-5 ">
+            <div class="container px-4 px-lg-5 mt-5">
+                <h2 class="fw-bolder mb-4">Related products</h2>
+                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                   {% for data1 in list1 %} 
+                    {% if data1.category == list.category %}
+                    <div class="col mb-5">
+                        <div class="card h-100">
+                            <!-- Product image-->
+                            <img class="card-img-top" style ="height:150px; width=350px" src="{{ asset('uploads/' ~ data1.bookImg) }}" alt="..." />
+                            <!-- Product details-->
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    <!-- Product name-->
+                                    <h5 class="fw-bolder">{{data1.title}}</h5>
+                                </div>
+                                <div style="color: grey; text-align:center;">
+                              <!--  Edition : {{data1.edition}}
+                                    <br>-->
+                                   {{data1.author}}
+                                 <!-- <br>
+                                  Category : {{data1.category}}-->
+                                 </div>
+                            </div>
+                            <!-- Product actions-->
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{{path('details',{'id':data1.id})}}">More details</a></div>
+                            </div>
+                        </div>
+                    </div>{% endif %}
+                    {% endfor %}
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+        </body>
+{% endblock %}
